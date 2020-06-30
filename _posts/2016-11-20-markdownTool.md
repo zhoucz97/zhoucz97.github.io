@@ -2,7 +2,7 @@
 layout: post
 title: Markdown工具集
 date: 2016-11-20 
-categorys: 尝试
+categories: 尝试
 tags: 工具    
 ---
 
