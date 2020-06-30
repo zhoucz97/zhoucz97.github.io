@@ -2,6 +2,7 @@
 layout: post
 title: Jekyll搭建个人博客(二)
 date: 2017-09-05 
+categorys: 尝试
 tags: 博客   
 ---
  

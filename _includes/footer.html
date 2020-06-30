@@ -23,16 +23,6 @@
 
           {% endif %}
 
-          {% if site.social.juejin %}
-          <!-- Zhihu -->
-          <li class="navigation__item_social">
-            <a href="https://juejin.im/user/{{site.social.juejin}}" title="@{{site.social.juejin}}" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/juejin.png);"></div>
-            </a>
-          </li>
-
-          {% endif %}
-
           {% if site.social.jianshu %}
           <!-- Zhihu -->
           <li class="navigation__item_social">
@@ -41,6 +31,15 @@
             </a>
           </li>
 
+          {% endif %}
+
+          {% if site.social.leetcode %}
+          <!-- Leetcode -->
+          <li class="navigation__item_social">
+            <a href="http://leetcode-cn.com/u/{{site.social.leetcode}}" title="@{{site.social.leetcode}} 的力扣" target="_blank">
+              <div class="footer-social-icon" style="background:url(/images/leetcode.png);"></div>
+            </a>
+          </li>
           {% endif %}
 
           {% if site.social.weibo %}

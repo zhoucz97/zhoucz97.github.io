@@ -1,0 +1,18 @@
+{% comment %}<!--
+类比  tags  
+-->{% endcomment %}
+
+{% if site.JB.categorys_list.provider == "custom" %}
+  {% include custom/categorys_list %}
+{% else %}
+  {% if categorys_list.first[0] == null %}
+    {% for category in categorys_list %} 
+    	<li><a href="{{ BASE_PATH }}{{ site.JB.categorys_path }}#{{ category }}-ref">{{ category }} <span>{{ site.categorys[category].size }}</span></a></li>
+    {% endfor %}
+  {% else %}
+    {% for category in categorys_list %} 
+    	<li><a href="{{ BASE_PATH }}{{ site.JB.categorys_path }}#{{ category[0] }}-ref">{{ category[0] }} <span>{{ category[1].size }}</span></a></li>
+    {% endfor %}
+  {% endif %}
+{% endif %}
+{% assign categorys_list = nil %}

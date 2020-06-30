@@ -1,6 +1,6 @@
 # Basic
 title: 周长智
-subtitle: 自留地
+subtitle: 我的自留地
 description: 到达胜利之前，无法回头
 # 头像里面的标题
 avatarTitle: Zhcz
@@ -40,10 +40,8 @@ baidu:
 
 # 《----------------- 上面的信息修改成你自己的 ---------------------------》
 #
-#
 #  _post/ 下的文章更换成你自己的文章
 #  帮忙star一下，感谢~😆 地址： https://github.com/leopardpan/leopardpan.github.io
-#
 #
 # 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
 
@@ -65,6 +63,7 @@ blog_button:
 nav:
     - {title: 所有文章, description: archive, url: '/archive'}
     - {title: 标签, description: tags, url: '/tags'}
+    - {title: 分类, description: categorys, url: '/categorys'}
     - {title: 关于我, description: about, url: '/about'}
 
 
