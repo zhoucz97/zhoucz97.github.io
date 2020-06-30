@@ -1,11 +1,11 @@
 # Basic
-title:
-subtitle: 个人站
-description: 欢迎来到我的个人站~
+title: 周长智
+subtitle: 自留地
+description: 到达胜利之前，无法回头
 # 头像里面的标题
-avatarTitle: leopardpan
+avatarTitle: Zhcz
 # 头像里面的描述
-avatarDesc: iOS / 机器学习
+avatarDesc: NLP / 机器学习
 url: "http://baixin.io"
 
 # Comment
@@ -19,6 +19,7 @@ social:
     weibo: 17515251425
     github: zhoucz97
     zhihu: zhou-chang-zhi-81
+    leetcode: code_rain
     # juejin: xxx
     # jianshu: 2ada30d8d0f7
     # twitter:
@@ -32,9 +33,9 @@ baidu:
 
 # Google Analytics
 # 使用博客模板请去掉或者更换 id
-ga:
-    id: xxxx
-    host: auto
+#ga:
+#    id: xxxx
+#    host: auto
 
 
 # 《----------------- 上面的信息修改成你自己的 ---------------------------》
