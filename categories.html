@@ -1,18 +1,18 @@
 ---
 layout: page
 title: 
-header: 根据分类到相应的文章
+header: 分类到相应的文章
 group: navigation
 ---
 {% include JB/setup %}
 
 <ul class="tag_box inline">
-  {% assign categorys_list = site.categorys %}  
-  {% include JB/categorys_list %}
+  {% assign categories_list = site.categories %}  
+  {% include JB/tags_list %}
 </ul>
 
 <div class = "card">
-{% for category in site.categorys %} 
+{% for category in site.categories %} 
 
   <h3 id="{{ category[0] }}-ref">{{ category[0] }}</h3>
   <ul>

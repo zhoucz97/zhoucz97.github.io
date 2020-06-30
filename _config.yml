@@ -63,7 +63,7 @@ blog_button:
 nav:
     - {title: 所有文章, description: archive, url: '/archive'}
     - {title: 标签, description: tags, url: '/tags'}
-    - {title: 分类, description: categorys, url: '/categorys'}
+    - {title: 分类, description: categories, url: '/categories'}
     - {title: 关于我, description: about, url: '/about'}
 
 
