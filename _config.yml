@@ -7,6 +7,7 @@ avatarTitle: Zhcz
 # 头像里面的描述
 avatarDesc: NLP / 机器学习
 url: "http://baixin.io"
+baseurl: ""
 
 # Comment
 comment:
