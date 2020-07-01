@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Markdown工具集
+title: Markdown语法
 date: 2016-11-20 
-categories: 尝试
-tags: 工具    
+categories: 工具
+tags: markdown    
 ---
 
 
