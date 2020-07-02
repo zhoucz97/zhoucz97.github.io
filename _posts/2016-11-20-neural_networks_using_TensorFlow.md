@@ -10,8 +10,7 @@ tags: 机器学习
 
 　　一直关注 `数据科学` 、 `机器学习` 的同学，一定会经常看到或听到关于 `深度学习` 和 `神经网络` 相关信息。如果你对 `深度学习` 感兴趣，但却还没有实际动手操作过，你可以从这里得到实践。 
 
-　　在本文中，我将介绍 `TensorFlow` , 帮你了解 `神经网络` 的实际作用，并使用 `TensorFlow` 来解决现实生活中的问题。 读这篇文章前，需要知道 `神经网络` 的基础知识和一些熟悉编程理念，文章中的代码是使用 `Pyhton` 编写的，所以还需要了解一些 `Python` 的基本语法，才能更有利对于文章的理解。                  
-                           
+　　在本文中，我将介绍 `TensorFlow` , 帮你了解 `神经网络` 的实际作用，并使用 `TensorFlow` 来解决现实生活中的问题。 读这篇文章前，需要知道 `神经网络` 的基础知识和一些熟悉编程理念，文章中的代码是使用 `Pyhton` 编写的，所以还需要了解一些 `Python` 的基本语法，才能更有利对于文章的理解。                             
 
 <div align="center">
 	<img src="/images/posts/tfimg/logo.jpg" height="300" width="500">  
@@ -20,15 +19,19 @@ tags: 机器学习
 
 ### 目录
 
-* [什么时候应用神经网络？](#When-to-apply-neural-net)
-* [通常神经网络能解决的问题](#solve-problems)
-* [了解图像数据和主流的库来解决问题](#popular-libraries)
-* [什么是 TensorFlow？](#What-is-TensorFlow)
-* [TensorFlow 一个 典型 的 “ 流 ”](#A-typical-flow)
-* [在 TensorFlow 中实现 MLP](#MLP)
-* [TensorFlow 的限制](#Limitations-of-TensorFlow)
-* [TensorFlow 与其他库](#vs-libraries)
-* [从这里去哪里？](#Where-to-go-from-here)
+- [介绍](#介绍)
+  - [目录](#目录)
+  - [<a name="When-to-apply-neural-net"></a>什么时候用神经网络？](#什么时候用神经网络)
+  - [<a name="solve-problems"></a>通常神经网络解决的问题](#通常神经网络解决的问题)
+  - [<a name="popular-libraries"></a>了解图像数据和主流的库来解决问题](#了解图像数据和主流的库来解决问题)
+  - [<a name="What-is-TensorFlow"></a>什么是 TensorFlow ？](#什么是-tensorflow-)
+  - [<a name="A-typical-flow"></a>TensorFlow 的典型 “流”](#tensorflow-的典型-流)
+  - [<a name="MLP"></a>在 TensorFlow 中实现神经网络](#在-tensorflow-中实现神经网络)
+  - [<a name="Limitations-of-TensorFlow"></a>TensorFlow 的限制](#tensorflow-的限制)
+  - [<a name="vs-libraries"></a>TensorFlow 与其他库](#tensorflow-与其他库)
+  - [<a name="Where-to-go-from-here"></a>从这里去哪里？](#从这里去哪里)
+  - [参考资源](#参考资源)
+  - [关于原文](#关于原文)
 
 
 ### <a name="When-to-apply-neural-net"></a>什么时候用神经网络？
