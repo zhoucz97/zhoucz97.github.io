@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>动态规划之01背包问题 | 雪落山庄</title><meta name="keywords" content="动态规划"><meta name="author" content="萧瑟,1059482037@qq.com"><meta name="copyright" content="萧瑟"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 01背包 01背包问题是经典的 多阶段动态规划 问题。  多阶段动态规划问题：可以描述成若干个有序阶段，且每个阶段的状态只和上一个阶段的状态有关。   如图所示，阶段2的D状态是由阶段1的AB状态决定的，C状态是由A状态决定的。 01背包也是如此，前i个物品装入背包的最大价值是由前i-1个物品装入背包的最大价值决定的。 问题描述 有n件物品，每件物品的体积为w[i]，价值为v[i]，每件物品">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划之01背包问题">
+<meta property="og:url" content="https://zhoucz97.gitee.io/2021/03/24/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="雪落山庄">
+<meta property="og:description" content="1. 01背包 01背包问题是经典的 多阶段动态规划 问题。  多阶段动态规划问题：可以描述成若干个有序阶段，且每个阶段的状态只和上一个阶段的状态有关。   如图所示，阶段2的D状态是由阶段1的AB状态决定的，C状态是由A状态决定的。 01背包也是如此，前i个物品装入背包的最大价值是由前i-1个物品装入背包的最大价值决定的。 问题描述 有n件物品，每件物品的体积为w[i]，价值为v[i]，每件物品">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhoucz97.gitee.io/image-bed/WallpaperCollection/705446.jpg">
+<meta property="article:published_time" content="2021-03-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-23T16:00:00.000Z">
+<meta property="article:author" content="萧瑟">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhoucz97.gitee.io/image-bed/WallpaperCollection/705446.jpg"><link rel="shortcut icon" href="https://zhoucz97.gitee.io/image-bed/others/favicon.png"><link rel="canonical" href="https://zhoucz97.gitee.io/2021/03/24/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: 萧瑟","link":"链接: ","source":"来源: 雪落山庄","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-24 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="雪落山庄" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://zhoucz97.gitee.io/image-bed/others/touxiang.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zhoucz97.gitee.io/image-bed/WallpaperCollection/705446.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">雪落山庄</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">动态规划之01背包问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-23T16:00:00.000Z" title="发表于 2021-03-24 00:00:00">2021-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-23T16:00:00.000Z" title="更新于 2021-03-24 00:00:00">2021-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>1. 01背包</h1>
+<p>01背包问题是经典的 <strong>多阶段动态规划</strong> 问题。</p>
+<blockquote>
+<p>多阶段动态规划问题：可以描述成若干个有序阶段，且每个阶段的状态只和上一个阶段的状态有关。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/24/6gFnJDlMQXdbfWU.png" alt=""></p>
+<p>如图所示，阶段2的D状态是由阶段1的AB状态决定的，C状态是由A状态决定的。</p>
+<p>01背包也是如此，前i个物品装入背包的最大价值是由前i-1个物品装入背包的最大价值决定的。</p>
+<h2 id="问题描述">问题描述</h2>
+<p>有<code>n</code>件物品，每件物品的体积为<code>w[i]</code>，价值为<code>v[i]</code>，每件物品的体积都不相同，现有一个容量为W的背包，问怎么装才能使得背包内的价值最大？</p>
+<h2 id="思路">思路</h2>
+<p>用暴力法可解，但是时间复杂度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，这是不能接受的。而用动态规划算法可以将其降到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nV)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>令</strong><code>dp[i][j]</code><strong>表示前i件物品装入容量为j的背包中所能获得的最大价值。</strong></p>
+<p>比如说，3件物品<code>w=[1,2,3], v=[2,3,7]</code>，则前3件物品装入容量为3的背包中所获得的最大价值为7。</p>
+<p>考虑对<code>dp[i][j]</code>的求解：</p>
+<ol>
+<li>如果<code>w[i]&gt;j</code>，即背包放不下第i件物品，显然有<code>dp[i][j] = dp[i-1][j]</code>；</li>
+<li>如果<code>w[i]&lt;=j</code>，则此时有两种选择，放还是不放。
+<ul>
+<li>放的话，则<code>dp[i][j] = dp[i-1][j-w[i]] +v[i] </code>；</li>
+<li>不放的话，则<code>dp[i][j] = dp[i-1][j]</code>；</li>
+<li>即<code>dp[i][j] = max(dp[i-1][j-w[i]] +v[i], dp[i-1][j])</code>。</li>
+</ul>
+</li>
+</ol>
+<p>犹记得上次学背包问题还是大二，现在都研一了，过了太久了，已经忘没了。所以当我再看到这个式子时，有些纳闷，为啥会有两种选择放还是不放，既然背包容量够大，那肯定放啊，还用问吗？</p>
+<p>其实这种想法是不对的，这是贪心的思路，贪心就是当前状态依赖于<strong>前一个状态</strong>。</p>
+<p>而01背包不是这样的，它的当前状态依赖于<strong>前一行状态</strong>，至少从式子中我们可以看出，它依赖于<code>dp[i-1][j-w[i]]</code>和<code>dp[i-1][j]</code>这两个状态。</p>
+<blockquote>
+<p>前一行状态的就是dp[i-1][1], dp[i-1][2], …, dp[i-1][W]</p>
+</blockquote>
+<p>究其原因，这种错误想法的来源就是忽略了空间，dp数组是一个二维空间，放了，就说明当前状态是从<code>dp[i-1][j-w[i]]</code>变化过来的，不放，就说明当前状态是从状态<code>dp[i-1][j]</code>变化过来的。</p>
+<blockquote>
+<p>关于这个问题，可以参考知乎回答——<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/265168001">能否讲讲你对01背包的理解</a></p>
+</blockquote>
+<h2 id="代码">代码</h2>
+<p>由此，我们便可以写出01背包的核心代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;  <span class="comment">// 第1件物品到第n件物品</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=W; j++) &#123; <span class="comment">// 背包容量从1到W</span></span><br><span class="line">		<span class="keyword">if</span>(w[i] &lt; j)	<span class="comment">// 如果第i件物品体积大于背包容量</span></span><br><span class="line">			dp[i][j] = dp[i<span class="number">-1</span>][j];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			dp[i][j] = max(dp[i<span class="number">-1</span>][j], dp[i<span class="number">-1</span>][j-w[i]] + v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>手推一遍dp数组的话会更加明白原理。</p>
+<p>例子：<a target="_blank" rel="noopener" href="https://blog.csdn.net/SM20155201314/article/details/95462981">01背包问题例子</a></p>
+<h3 id="滚动数组优化">滚动数组优化</h3>
+<p><img src="https://i.loli.net/2021/03/24/fzV3yNo6ASlt9ns.png" alt=""></p>
+<p>从图中我们可以看到，第i行的状态只依赖于第i-1行，仅凭这点，我们就可以将二维数组优化为一维数组。</p>
+<p>我们通过图和前面代码可以看到，<code>dp[i][j]</code>只依赖于它头上那个和它左上方的某个状态。所以如果我们要将其压缩为一维数组的话，就必须从右向左遍历更新了。</p>
+<p>也就是说，我们创建一个一维数组，然后从右向左一遍遍的更新覆盖，覆盖一次，就对应二维数组中我们完成了一行的状态更新。</p>
+<p>核心代码为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=W; j&gt;=<span class="number">1</span>; j--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(w[i] &lt; j) 	</span><br><span class="line">			<span class="comment">// 右边的dp[j]表示原来的值，左边的表示更新后的值，在二维数组中dp[i][j]=dp[i-1][j],所以在一维数组中，该行代码可以去掉。 </span></span><br><span class="line">			dp[j] = dp[j]; </span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			dp[j] = max(dp[j], dp[j-w[i]] + v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="例子">例子</h2>
+<p>样例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>   <span class="number">8</span>   <span class="comment">// n=5, W = 8</span></span><br><span class="line"><span class="number">3</span> <span class="number">5</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span>  <span class="comment">// w[i]</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">2</span> <span class="number">1</span> <span class="number">3</span>  <span class="comment">// v[i]</span></span><br></pre></td></tr></table></figure>
+<p>求解：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">5</span>, V = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">6</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">int</span> w[<span class="number">6</span>] = &#123;<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">6</span>] = &#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = w[i]; j&lt;=<span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(w[i] &gt; j)    dp[i][j] = dp[i<span class="number">-1</span>][j];</span><br><span class="line">            <span class="keyword">else</span>    dp[i][j] = max(dp[i<span class="number">-1</span>][j], dp[i<span class="number">-1</span>][j-w[i]] + c[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j&lt;=V; j++)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;dp[i][j]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>dp数组为：</p>
+<p><img src="https://i.loli.net/2021/03/24/X1TVbtZmpUOwaBi.png" alt=""></p>
+<p>第0行和第0列都是0，分别表示前i个物品放入容量为0的背包中的最大价值和前0个物品放入容量为j的背包中的最大价值。</p>
+<h1>2. 完全背包</h1>
+<h2 id="问题描述-2">问题描述</h2>
+<p>完全背包较01背包的区别就是：完全背包每种体积的物品可以有无穷件。选一件物品时可以选一件，两件，…，只要不超过背包容量即可。</p>
+<p>同样令<code>dp[i][j]</code>表示前i件物品放入容量为j的背包中的最大价值。</p>
+<h2 id="思路-2">思路</h2>
+<p>和01背包也几乎是一样的。</p>
+<ol>
+<li>如果<code>w[i]&gt;j</code>，即背包放不下第i件物品，显然有<code>dp[i][j] = dp[i-1][j]</code>；</li>
+<li>如果<code>w[i]&lt;=j</code>，则此时有两种选择，放还是不放。
+<ul>
+<li>不放的话，则<code>dp[i][j] = dp[i-1][j]</code>，这跟01背包是一样的；</li>
+<li>放的话，就不一样了，因为01背包每种物品只有一件，所以必须转移到<code>dp[i-1][j-w[i]]</code>这个状态，但是完全背包的话每种物品有无穷件，所以放了第i件物品后还可以放第i件物品，故转移到<code>dp[i][j-w[i]]</code>这个状态，所以<code>dp[i][j] = dp[i][j-w[i]]+v[i]</code>；</li>
+<li>即<code>dp[i][j] = max(dp[i][j-w[i]] +v[i], dp[i-1][j])</code>。</li>
+</ul>
+</li>
+</ol>
+<p>也就是说，完全背包和01背包的区别就是<code>dp[i][j-w[i]]</code>还是<code>dp[i-1][j-w[i]]</code>。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1059482037@qq.com">萧瑟</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhoucz97.gitee.io/2021/03/24/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">https://zhoucz97.gitee.io/2021/03/24/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhoucz97.gitee.io" target="_blank">雪落山庄</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></div><div class="post_share"><div class="social-share" data-image="https://zhoucz97.gitee.io/image-bed/WallpaperCollection/705446.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://i.loli.net/2021/02/08/WImOlpfcH3Qqn4X.png" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/02/08/WImOlpfcH3Qqn4X.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://i.loli.net/2021/02/08/bEwC6NitH3l5gry.jpg" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/02/08/bEwC6NitH3l5gry.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/03/19/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E4%B9%8B2020Neurocomputing-Joint%20Multi-level%20Attentional%20Model%20for%20Emotion%20Detection%20and%20Emotion-cause%20Pair%20Extraction/"><img class="next-cover" src="https://zhoucz97.gitee.io/image-bed/WallpaperCollection/234750-158921207008d8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">论文笔记之2020Neurocomputing-Joint Multi-level Attentional Model for Emotion Detection and Emotion-cause Pair Extraction</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. 01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84%E4%BC%98%E5%8C%96"><span class="toc-text">滚动数组优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. 完全背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="toc-text">思路</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgb(176,196,222)"><div id="footer-wrap"><div class="copyright">&copy;2021 By 萧瑟</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'fB1TCwaFGyuGBoL5Q8c8WVLO-gzGzoHsz',
+      appKey: 'xLd1VgPUex34iDpH11EDz1Qm',
+      placeholder: '记得留下您的昵称和邮箱，方便得到回复哦~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="仁,义,礼,智,信,温,良,恭,俭,让" data-fontsize="18px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
