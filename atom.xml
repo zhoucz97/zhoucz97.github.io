@@ -6,7 +6,7 @@
   <link href="https://zhoucz97.github.io/atom.xml" rel="self"/>
   
   <link href="https://zhoucz97.github.io/"/>
-  <updated>2021-05-06T16:00:00.000Z</updated>
+  <updated>2021-05-23T16:00:00.000Z</updated>
   <id>https://zhoucz97.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021-5-24总结</title>
+    <link href="https://zhoucz97.github.io/2021/05/24/2021-5-24%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://zhoucz97.github.io/2021/05/24/2021-5-24%E5%B0%8F%E8%AE%B0/</id>
+    <published>2021-05-23T16:00:00.000Z</published>
+    <updated>2021-05-23T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近这段时间，一直在忙着做实验跑代码，想着通过现有代码调参能调一个很不错的结果。但是现在看来，现有模型再提升的可能性不太大，接下来一边接着调参，一边多看看论文，再好好想想点子。</p><p>今天了解了一下雅思辅导的事情，这周三以及周末，去参加个模考和试听班，打算报一个班学一学。</p><p>想了想，如果真要去出国读博的话，我欠缺的东西还太多太多。</p><p>本科双非，GPA无优势，目前无论文无实习，雅思没过。</p><p>也就是说，申请留学的要求我几乎都不满足不占优，今天那老师说申请留学最好提前一两年就开始准备，也就是说研二结束，我的完美状态应该是：</p><p>有论文、有实习、雅思7.0以上。</p><p>第一次投论文大概率中不了，那么我就要有投两次的机会。</p><p>从未来倒推到现在，我需要：</p><p><strong>暑假前完成ECPE的实验，现在来看实验效果还是不理想，点子太少，暑假期间写论文并且尽量投出去；</strong></p><p><strong>暑假先考一次雅思试试；</strong></p><p><strong>研二上学期看完统计学习方法和花书，以及有了一篇已投论文，根据这些去找寒假实习；</strong></p><p><strong>以及研二再参加一次雅思考试，争取到7.0分；</strong></p><p>那么眼下我需要做的就是：</p><ol><li><p>多做实验，多看论文，多想点子；</p></li><li><p>尽快了解雅思考试，报班补习；</p></li></ol><p>论文、实习、雅思，近一年内我最重要的几件事。当然，还有找女朋友…这个随缘得了。</p><p><strong>每一次向上爬的机会，我都要努力抓住！</strong></p><p>加油！！！！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近这段时间，一直在忙着做实验跑代码，想着通过现有代码调参能调一个很不错的结果。但是现在看来，现有模型再提升的可能性不太大，接下来一边接着调参，一边多看看论文，再好好想想点子。&lt;/p&gt;
+&lt;p&gt;今天了解了一下雅思辅导的事情，这周三以及周末，去参加个模考和试听班，打算报一个班学</summary>
+      
+    
+    
+    
+    <category term="小记" scheme="https://zhoucz97.github.io/categories/%E5%B0%8F%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>论文笔记之2021AAAI-BiMRC for ASTE</title>
